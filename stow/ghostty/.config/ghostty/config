@@ -1,0 +1,9 @@
+# Ghostty config — reference: https://ghostty.org/docs/config/reference
+# Validate with: ghostty +validate-config
+
+font-size = 14
+window-save-state = always
+copy-on-select = clipboard
+
+# Let Option act as Alt so fzf's Alt-C and readline Alt bindings work.
+macos-option-as-alt = left

@@ -1,0 +1,5 @@
+# Global gitignore (git reads ~/.config/git/ignore by default)
+.DS_Store
+.idea/workspace.xml
+*.swp
+.env.local

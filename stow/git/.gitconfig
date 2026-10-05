@@ -1,0 +1,30 @@
+# Generic git config. Tracked in ~/dotfiles-wl via Stow.
+# Email and other machine/work-specific values go in ~/.gitconfig.local (untracked).
+
+[user]
+    name = Wai Loon Theng
+
+[init]
+    defaultBranch = main
+
+[fetch]
+    prune = true
+
+[push]
+    autoSetupRemote = true
+
+[merge]
+    conflictStyle = zdiff3
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+
+# Keep last so local values override the above.
+[include]
+    path = ~/.gitconfig.local

@@ -1,0 +1,11 @@
+# Global runtime versions. Projects can pin their own via mise.toml.
+# Project dependencies are owned by uv / pnpm / Maven or Gradle wrappers.
+
+[tools]
+node = "24"
+python = "3.13"
+java = "temurin-21"
+
+[settings]
+# Also honour .nvmrc / .python-version files found in projects.
+idiomatic_version_file_enable_tools = ["node", "python"]
