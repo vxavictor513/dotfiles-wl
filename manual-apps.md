@@ -29,6 +29,12 @@ Setup: Open Sublime Text → Tools → Install Package Control. It will auto-ins
 packages listed in `stow/sublime-text/.../Package Control.sublime-settings` on next launch.
 Add future packages there (not via the command palette alone) so they're tracked.
 
+### OpenInTerminal
+Setup: Launch once → Preferences: Default Terminal = Ghostty, Default Editor = Sublime Text,
+enable Launch at login. Enable the Finder extension (System Settings → General → Login Items
+& Extensions → Extensions → Finder), then Finder → Customize Toolbar… → drag in the button.
+Allow Finder automation on first use.
+
 ### VS Code — Settings Sync
 Setup: Sign in to Settings Sync (Code → Settings Sync → Turn On) with your GitHub account.
 Extensions, settings and keybindings sync automatically. No files to stow.
