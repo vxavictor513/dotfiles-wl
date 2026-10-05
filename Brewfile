@@ -109,4 +109,4 @@ cask "stats"
 # --- Mac App Store (requires being signed in to the App Store) ---
 mas "Amphetamine", id: 937984704
 mas "Azure VPN Client", id: 1553936137
-mas "Xcode", id: 497799835
+# mas "Xcode", id: 497799835  # 15 GB install; manage via App Store manually
