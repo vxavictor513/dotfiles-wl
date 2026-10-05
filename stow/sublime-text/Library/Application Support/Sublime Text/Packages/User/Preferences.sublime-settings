@@ -26,4 +26,6 @@
     // --- Sidebar ---
     "file_exclude_patterns": [".DS_Store", "*.pyc", "__pycache__"],
     "folder_exclude_patterns": [".git", "node_modules", ".venv", "__pycache__", ".idea"],
+
+    "native_tabs": "preferred",
 }
