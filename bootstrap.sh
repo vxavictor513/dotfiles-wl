@@ -82,7 +82,15 @@ stow --dir="$STOW_DIR" --target="$HOME" --no-folding --restow "${STOW_PACKAGES[@
 info "Installing mise runtimes"
 (cd "$HOME" && mise install && mise ls --current)
 
-# 7. Claude Code (native installer, self-updating)
+# 7. Azure CLI extensions
+if command -v az >/dev/null; then
+  if ! az extension show --name azure-devops >/dev/null 2>&1; then
+    info "Installing Azure CLI extension: azure-devops"
+    az extension add --name azure-devops
+  fi
+fi
+
+# 8. Claude Code (native installer, self-updating)
 if ! command -v claude >/dev/null && [[ ! -x "$HOME/.local/bin/claude" ]]; then
   info "Installing Claude Code"
   curl -fsSL https://claude.ai/install.sh | bash

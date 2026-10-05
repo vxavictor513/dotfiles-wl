@@ -39,6 +39,11 @@ brew "pnpm"
 # Extremely fast Python package installer and resolver
 brew "uv"
 
+# --- Cloud CLI ---
+# Microsoft Azure CLI (includes `az` alias)
+# azure-devops extension is added by bootstrap.sh after install
+brew "azure-cli"
+
 # --- Kubernetes ---
 # Kubernetes CLI to manage clusters in style
 brew "k9s"
