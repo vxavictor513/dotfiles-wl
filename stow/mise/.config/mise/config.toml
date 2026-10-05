@@ -7,6 +7,10 @@ python = "3.13"
 java = "temurin-21"
 # Global mvn for ad-hoc use; projects should still prefer ./mvnw.
 maven = "3"
+# Terraform — BSL licence since 2023; check with legal for commercial use.
+# Pin to "1" to follow 1.x without jumping to 2.x when it ships.
+terraform = "1"
+tflint = "latest"
 
 [settings]
 # Also honour .nvmrc / .python-version files found in projects.

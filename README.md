@@ -6,7 +6,7 @@ Declarative, Git-managed setup for an Apple Silicon Mac.
 |---|---|---|
 | CLI tools, GUI apps | Homebrew + `brew bundle` | `Brewfile` |
 | Active config files | GNU Stow (symlinks into this repo) | `stow/<package>/` |
-| Runtime versions (Node, Python, Java, Maven) | mise | `stow/mise/.config/mise/config.toml` |
+| Runtime versions (Node, Python, Java, Maven, Terraform, tflint) | mise | `stow/mise/.config/mise/config.toml` |
 | Project dependencies | uv / pnpm / Maven & Gradle wrappers | each project |
 | App Store apps, licences, one-off setup | humans | `manual-apps.md` |
 

@@ -44,6 +44,15 @@ brew "uv"
 # azure-devops extension is added by bootstrap.sh after install
 brew "azure-cli"
 
+# --- Infrastructure as Code ---
+# Terraform docs auto-generation from module inputs/outputs
+brew "terraform-docs"
+# Security/misconfiguration scanner (Terraform, containers, SBOMs, etc.)
+brew "trivy"
+# Cloud cost estimation from Terraform plans
+brew "infracost"
+# terraform and tflint are managed by mise (see stow/mise/.config/mise/config.toml)
+
 # --- Kubernetes ---
 # Kubernetes CLI to manage clusters in style
 brew "k9s"
