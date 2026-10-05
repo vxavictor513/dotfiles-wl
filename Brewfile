@@ -43,6 +43,11 @@ brew "uv"
 # Kubernetes CLI to manage clusters in style
 brew "k9s"
 
+# --- Local LLMs ---
+# Create, run, and share large language models (LLMs)
+# Runs `ollama serve` as a login service (port 11434)
+brew "ollama", start_service: true
+
 # --- Containers (Colima: open-source, no commercial licence needed) ---
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
@@ -76,8 +81,6 @@ cask "google-chrome"
 cask "bruno"
 # Universal database tool and SQL client
 cask "dbeaver-community"
-# Run large language models locally (menu bar app + ollama CLI)
-cask "ollama-app"
 
 # --- Finder integration ---
 # Finder Toolbar app to open current directory in Terminal or Editor
