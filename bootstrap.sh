@@ -96,29 +96,28 @@ if ! command -v claude >/dev/null && [[ ! -x "$HOME/.local/bin/claude" ]]; then
   curl -fsSL https://claude.ai/install.sh | bash
 fi
 
-# 8. MCP servers
+# 8. Azure DevOps MCP server (configs are app-managed, so patch rather than stow)
 AZURE_DEVOPS_ORG="silksong"
+CLAUDE_BIN="$(command -v claude || echo "$HOME/.local/bin/claude")"
 
-# Claude Code (user-scoped)
-if command -v claude >/dev/null || [[ -x "$HOME/.local/bin/claude" ]]; then
-  if ! (claude mcp list 2>/dev/null | grep -q '^ado '); then
-    info "Registering Azure DevOps MCP in Claude Code"
-    claude mcp add --scope user ado -- npx -y @azure-devops/mcp "$AZURE_DEVOPS_ORG"
-  fi
+# Claude Code: user scope = available in every project. Checked from the repo dir
+# so a local-scope entry for some other directory doesn't count.
+if [[ -x "$CLAUDE_BIN" ]] &&
+  ! (cd "$DOTFILES_DIR" && "$CLAUDE_BIN" mcp get azure-devops >/dev/null 2>&1); then
+  info "Registering Azure DevOps MCP in Claude Code"
+  "$CLAUDE_BIN" mcp add --scope user azure-devops -- npx -y @azure-devops/mcp "$AZURE_DEVOPS_ORG"
 fi
 
-# Claude Desktop (merge mcpServers into its config with jq)
+# Claude Desktop: merge only mcpServers.ado, keeping the app's own preferences.
 CLAUDE_DESKTOP_CFG="$HOME/Library/Application Support/Claude/claude_desktop_config.json"
-if command -v jq >/dev/null && [[ -f "$CLAUDE_DESKTOP_CFG" ]]; then
-  if ! jq -e '.mcpServers.ado' "$CLAUDE_DESKTOP_CFG" >/dev/null 2>&1; then
-    info "Registering Azure DevOps MCP in Claude Desktop"
-    local tmp; tmp="$(mktemp)"
-    jq --arg org "$AZURE_DEVOPS_ORG" \
-      '.mcpServers.ado = {command:"npx",args:["-y","@azure-devops/mcp",$org]}' \
-      "$CLAUDE_DESKTOP_CFG" > "$tmp" && mv "$tmp" "$CLAUDE_DESKTOP_CFG"
-  fi
-elif [[ ! -f "$CLAUDE_DESKTOP_CFG" ]]; then
-  warn "Claude Desktop not installed yet; MCP not registered."
+if [[ ! -f "$CLAUDE_DESKTOP_CFG" ]]; then
+  warn "Claude Desktop hasn't been launched yet; re-run bootstrap.sh to register its MCP server."
+elif ! jq -e '.mcpServers.ado' "$CLAUDE_DESKTOP_CFG" >/dev/null 2>&1; then
+  info "Registering Azure DevOps MCP in Claude Desktop (restart Claude to load it)"
+  tmp="$(mktemp)"
+  jq --arg org "$AZURE_DEVOPS_ORG" \
+    '.mcpServers.ado = {command: "npx", args: ["-y", "@azure-devops/mcp", $org]}' \
+    "$CLAUDE_DESKTOP_CFG" >"$tmp" && mv "$tmp" "$CLAUDE_DESKTOP_CFG"
 fi
 
 # 9. Checks and remaining manual work
