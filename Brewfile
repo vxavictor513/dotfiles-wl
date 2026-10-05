@@ -74,6 +74,16 @@ cask "bruno"
 # Universal database tool and SQL client
 cask "dbeaver-community"
 
+# --- Communication ---
+# Video communications platform
+cask "zoom"
+# Video conferencing and messaging app
+cask "webex"
+
+# --- Network / VPN ---
+# Mesh VPN based on WireGuard
+cask "tailscale-app"
+
 # --- Productivity / menu bar ---
 # Application launcher and productivity software
 cask "alfred"
