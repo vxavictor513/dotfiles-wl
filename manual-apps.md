@@ -14,7 +14,17 @@ Reason: `mas` entries (Amphetamine, Xcode) need an App Store login before `brew 
 ### Xcode
 Setup: Launch once, then `sudo xcodebuild -license accept` and `xcodebuild -runFirstLaunch`.
 
+### Sublime Text — Package Control
+Setup: Open Sublime Text → Tools → Install Package Control. It will auto-install the
+packages listed in `stow/sublime-text/.../Package Control.sublime-settings` on next launch.
+Add future packages there (not via the command palette alone) so they're tracked.
+
+### VS Code — Settings Sync
+Setup: Sign in to Settings Sync (Code → Settings Sync → Turn On) with your GitHub account.
+Extensions, settings and keybindings sync automatically. No files to stow.
+
 ### Licences
+
 Setup: Alfred Powerpack, BetterDisplay Pro, Shottr, IntelliJ IDEA, Sublime Text / Merge.
 
 ### macOS permissions

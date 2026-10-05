@@ -5,7 +5,7 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 STOW_DIR="$DOTFILES_DIR/stow"
-STOW_PACKAGES=(zsh git ghostty mise)
+STOW_PACKAGES=(zsh git ghostty mise sublime-text)
 BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 
 info() { printf '\033[1;34m==>\033[0m %s\n' "$*"; }

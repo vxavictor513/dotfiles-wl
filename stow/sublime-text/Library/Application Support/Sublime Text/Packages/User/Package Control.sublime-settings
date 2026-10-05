@@ -1,0 +1,11 @@
+{
+    // Package Control reads this list on startup and installs any missing packages.
+    // Add package names here; remove to uninstall (Package Control will prompt).
+    "installed_packages":
+    [
+        "Package Control",
+        "EditorConfig",
+        "SublimeLinter",
+        "Terminus"
+    ]
+}
