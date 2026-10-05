@@ -92,6 +92,10 @@ cask "zoom"
 # Video conferencing and messaging app
 cask "webex"
 
+# --- Media ---
+# Free and open-source media player
+cask "iina"
+
 # --- Network / VPN ---
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
