@@ -76,6 +76,8 @@ cask "google-chrome"
 cask "bruno"
 # Universal database tool and SQL client
 cask "dbeaver-community"
+# Run large language models locally (menu bar app + ollama CLI)
+cask "ollama-app"
 
 # --- Finder integration ---
 # Finder Toolbar app to open current directory in Terminal or Editor
