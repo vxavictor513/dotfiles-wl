@@ -40,6 +40,10 @@ brew "pnpm"
 # Extremely fast Python package installer and resolver
 brew "uv"
 
+# --- Kubernetes ---
+# Kubernetes CLI to manage clusters in style
+brew "k9s"
+
 # --- Containers (Colima: open-source, no commercial licence needed) ---
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
