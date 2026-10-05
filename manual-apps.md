@@ -6,13 +6,23 @@ can't be automated. `bootstrap.sh` prints the `###` headings below as a checklis
 Corporate MDM-managed software (Company Portal, security agents, Microsoft 365, VPN)
 is out of scope — the company's MDM installs and maintains it.
 
-## Post-install Setup (apps installed by Brewfile)
+## Mac App Store
 
-### App Store sign-in
-Reason: `mas` entries (Amphetamine, Xcode) need an App Store login before `brew bundle`.
+Installed by hand: `mas install` needs admin rights, which Privilege Management blocks.
+
+### Amphetamine
+Source: https://apps.apple.com/app/amphetamine/id937984704
+
+### Azure VPN Client
+Source: https://apps.apple.com/app/azure-vpn-client/id1553936137
+Setup: Import the VPN profile provided by the network team.
 
 ### Xcode
-Setup: Launch once, then `sudo xcodebuild -license accept` and `xcodebuild -runFirstLaunch`.
+Source: https://apps.apple.com/app/xcode/id497799835 (~15 GB)
+Setup: Launch once, then `sudo xcodebuild -license accept` and `xcodebuild -runFirstLaunch`
+(both need an admin elevation via Privilege Management).
+
+## Post-install Setup (apps installed by Brewfile)
 
 ### Sublime Text — Package Control
 Setup: Open Sublime Text → Tools → Install Package Control. It will auto-install the
@@ -24,7 +34,6 @@ Setup: Sign in to Settings Sync (Code → Settings Sync → Turn On) with your G
 Extensions, settings and keybindings sync automatically. No files to stow.
 
 ### Licences
-
 Setup: Alfred Powerpack, BetterDisplay Pro, Shottr, IntelliJ IDEA, Sublime Text / Merge.
 
 ### macOS permissions

@@ -1,6 +1,7 @@
 # Desired state for this machine — not a version lockfile.
 # Add entries with: brew bundle add <formula>  /  brew bundle add --cask <cask>
 # Runtimes (node/python/java) are owned by mise, not Homebrew.
+# Mac App Store apps are installed by hand — see manual-apps.md.
 
 # --- Dotfiles plumbing ---
 # Distributed revision control system
@@ -9,8 +10,6 @@ brew "git"
 brew "stow"
 # Polyglot runtime manager (node/python/java versions)
 brew "mise"
-# Mac App Store command-line interface
-brew "mas"
 
 # --- Shell & CLI ---
 # Cat clone with syntax highlighting and Git integration
@@ -105,8 +104,3 @@ cask "maccy"
 cask "shottr"
 # System monitor for the menu bar
 cask "stats"
-
-# --- Mac App Store (requires being signed in to the App Store) ---
-mas "Amphetamine", id: 937984704
-mas "Azure VPN Client", id: 1553936137
-# mas "Xcode", id: 497799835  # 15 GB install; manage via App Store manually

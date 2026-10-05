@@ -4,11 +4,11 @@ Declarative, Git-managed setup for an Apple Silicon Mac.
 
 | Layer | Tool | Lives in |
 |---|---|---|
-| CLI tools, GUI apps, App Store apps | Homebrew + `brew bundle` | `Brewfile` |
+| CLI tools, GUI apps | Homebrew + `brew bundle` | `Brewfile` |
 | Active config files | GNU Stow (symlinks into this repo) | `stow/<package>/` |
 | Runtime versions (Node, Python, Java) | mise | `stow/mise/.config/mise/config.toml` |
 | Project dependencies | uv / pnpm / Maven & Gradle wrappers | each project |
-| Exceptions (vendor installers, licences, one-off setup) | humans | `manual-apps.md` |
+| App Store apps, licences, one-off setup | humans | `manual-apps.md` |
 
 ## Rebuild a machine
 
@@ -18,8 +18,8 @@ git clone <repo-url> ~/dotfiles-wl         # 2. git ships with the CLT
 ~/dotfiles-wl/bootstrap.sh                 # 3. Homebrew, brew bundle, stow, mise install
 ```
 
-Then work through the checklist printed at the end (from `manual-apps.md`).
-Sign in to the App Store first so the `mas` entries succeed.
+Then work through the checklist printed at the end (from `manual-apps.md`),
+including installing the Mac App Store apps by hand.
 
 `bootstrap.sh` is idempotent — re-run it whenever the Brewfile or stow packages change.
 Existing files that would block Stow are moved to `~/.dotfiles-backup/<timestamp>/`.
@@ -96,4 +96,6 @@ macOS may ask you to re-grant Accessibility / Screen Recording afterwards.
 - **Colima over OrbStack** — this is a corporate machine; OrbStack needs a paid
   licence for commercial use. Don't install both.
 - **mise only** — no SDKMAN/nvm/pyenv unless a tool specifically requires one.
+- **No `mas` entries** — `mas install` needs admin rights, which Privilege Management
+  blocks on this machine, so App Store apps live in `manual-apps.md` instead.
 - **Claude Code** uses Anthropic's native installer (self-updating), run by `bootstrap.sh`.

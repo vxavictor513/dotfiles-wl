@@ -58,11 +58,11 @@ if [[ ! -x /opt/homebrew/bin/brew ]]; then
 fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# 3. Homebrew packages, apps and Mac App Store entries
+# 3. Homebrew packages and apps
 adopt_existing_casks
 info "Running brew bundle"
 brew bundle --file="$DOTFILES_DIR/Brewfile" ||
-  warn "Some Brewfile entries failed (App Store sign-in? running apps?). Fix and re-run."
+  warn "Some Brewfile entries failed (running apps? version mismatch?). Fix and re-run."
 
 command -v stow >/dev/null || die "stow is missing; brew bundle must succeed for it first."
 command -v mise >/dev/null || die "mise is missing; brew bundle must succeed for it first."
