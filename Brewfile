@@ -74,6 +74,10 @@ cask "bruno"
 # Universal database tool and SQL client
 cask "dbeaver-community"
 
+# --- Finder integration ---
+# Finder Toolbar app to open current directory in Terminal or Editor
+cask "openinterminal"
+
 # --- Communication ---
 # Video communications platform
 cask "zoom"
