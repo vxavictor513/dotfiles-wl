@@ -1,8 +1,5 @@
 # Generic git config. Tracked in ~/dotfiles-wl via Stow.
-# Email and other machine/work-specific values go in ~/.gitconfig.local (untracked).
-
-[user]
-    name = Wai Loon Theng
+# Identity (name, email, signingkey) goes in ~/.gitconfig.local (untracked).
 
 [init]
     defaultBranch = main
