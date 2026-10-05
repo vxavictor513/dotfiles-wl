@@ -5,6 +5,8 @@
 node = "24"
 python = "3.13"
 java = "temurin-21"
+# Global mvn for ad-hoc use; projects should still prefer ./mvnw.
+maven = "3"
 
 [settings]
 # Also honour .nvmrc / .python-version files found in projects.
