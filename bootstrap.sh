@@ -96,7 +96,32 @@ if ! command -v claude >/dev/null && [[ ! -x "$HOME/.local/bin/claude" ]]; then
   curl -fsSL https://claude.ai/install.sh | bash
 fi
 
-# 8. Checks and remaining manual work
+# 8. MCP servers
+AZURE_DEVOPS_ORG="silksong"
+
+# Claude Code (user-scoped)
+if command -v claude >/dev/null || [[ -x "$HOME/.local/bin/claude" ]]; then
+  if ! (claude mcp list 2>/dev/null | grep -q '^ado '); then
+    info "Registering Azure DevOps MCP in Claude Code"
+    claude mcp add --scope user ado -- npx -y @azure-devops/mcp "$AZURE_DEVOPS_ORG"
+  fi
+fi
+
+# Claude Desktop (merge mcpServers into its config with jq)
+CLAUDE_DESKTOP_CFG="$HOME/Library/Application Support/Claude/claude_desktop_config.json"
+if command -v jq >/dev/null && [[ -f "$CLAUDE_DESKTOP_CFG" ]]; then
+  if ! jq -e '.mcpServers.ado' "$CLAUDE_DESKTOP_CFG" >/dev/null 2>&1; then
+    info "Registering Azure DevOps MCP in Claude Desktop"
+    local tmp; tmp="$(mktemp)"
+    jq --arg org "$AZURE_DEVOPS_ORG" \
+      '.mcpServers.ado = {command:"npx",args:["-y","@azure-devops/mcp",$org]}' \
+      "$CLAUDE_DESKTOP_CFG" > "$tmp" && mv "$tmp" "$CLAUDE_DESKTOP_CFG"
+  fi
+elif [[ ! -f "$CLAUDE_DESKTOP_CFG" ]]; then
+  warn "Claude Desktop not installed yet; MCP not registered."
+fi
+
+# 9. Checks and remaining manual work
 git config --global --includes user.email >/dev/null ||
   warn "git user.email not set. Add it to ~/.gitconfig.local:  [user] email = you@example.com"
 
