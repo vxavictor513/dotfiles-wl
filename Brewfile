@@ -43,6 +43,8 @@ brew "uv"
 # Microsoft Azure CLI (includes `az` alias)
 # azure-devops extension is added by bootstrap.sh after install
 brew "azure-cli"
+# Floci CLI
+brew "floci-io/floci/floci"
 
 # --- Infrastructure as Code ---
 # Terraform docs auto-generation from module inputs/outputs
