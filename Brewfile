@@ -30,6 +30,8 @@ brew "lazygit"
 brew "ripgrep"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Process YAML, JSON, XML, CSV and properties documents from the terminal
+brew "yq"
 
 # --- Project dependency tooling ---
 # AI agent toolkit (Pi); pulls in Homebrew node as a dependency only
@@ -58,6 +60,8 @@ brew "infracost"
 # --- Kubernetes ---
 # Kubernetes CLI to manage clusters in style
 brew "k9s"
+# Kubernetes package manager
+brew "helm"
 
 # --- Local LLMs ---
 # Create, run, and share large language models (LLMs)
