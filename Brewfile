@@ -62,6 +62,8 @@ brew "infracost"
 brew "k9s"
 # Kubernetes package manager
 brew "helm"
+# OpenShift command-line interface (`oc`)
+brew "openshift-cli"
 
 # --- Local LLMs ---
 # Create, run, and share large language models (LLMs)
