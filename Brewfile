@@ -34,6 +34,8 @@ brew "zoxide"
 brew "yq"
 
 # --- Project dependency tooling ---
+# OpenAI Codex CLI coding agent
+brew "codex"
 # AI agent toolkit (Pi); pulls in Homebrew node as a dependency only
 brew "pi-coding-agent"
 # Fast, disk space efficient package manager (Node)
