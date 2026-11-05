@@ -34,8 +34,6 @@ brew "zoxide"
 brew "yq"
 
 # --- Project dependency tooling ---
-# OpenAI Codex CLI coding agent
-brew "codex"
 # AI agent toolkit (Pi); pulls in Homebrew node as a dependency only
 brew "pi-coding-agent"
 # Fast, disk space efficient package manager (Node)
@@ -99,6 +97,8 @@ cask "visual-studio-code"
 # --- Dev apps ---
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# OpenAI Codex CLI coding agent
+cask "codex"
 # Web browser (corporate policies still apply via MDM profiles)
 cask "google-chrome"
 # Open source IDE for exploring and testing APIs
