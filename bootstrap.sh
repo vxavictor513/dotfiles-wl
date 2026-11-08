@@ -17,7 +17,7 @@ adopt_existing_casks() {
   local installed cask app
   installed="$(brew list --cask -1 2>/dev/null || true)"
   while IFS= read -r cask; do
-    grep -qx "$cask" <<<"$installed" && continue
+    grep -Fqx "$cask" <<<"$installed" && continue
     app="$(brew info --cask "$cask" |
       awk '/^==> Artifacts/ {f=1; next} /^==>/ {f=0} f && / \(App\)$/ {sub(/ \(App\)$/, ""); print; exit}')"
     [[ -n "$app" && -d "/Applications/$app" ]] || continue
@@ -96,7 +96,7 @@ if ! command -v claude >/dev/null && [[ ! -x "$HOME/.local/bin/claude" ]]; then
   curl -fsSL https://claude.ai/install.sh | bash
 fi
 
-# 8. Azure DevOps MCP server (configs are app-managed, so patch rather than stow)
+# 9. Azure DevOps MCP server (configs are app-managed, so patch rather than stow)
 AZURE_DEVOPS_ORG="silksong"
 CLAUDE_BIN="$(command -v claude || echo "$HOME/.local/bin/claude")"
 
@@ -120,7 +120,7 @@ elif ! jq -e '.mcpServers.ado' "$CLAUDE_DESKTOP_CFG" >/dev/null 2>&1; then
     "$CLAUDE_DESKTOP_CFG" >"$tmp" && mv "$tmp" "$CLAUDE_DESKTOP_CFG"
 fi
 
-# 9. Checks and remaining manual work
+# 10. Checks and remaining manual work
 git config --global --includes user.email >/dev/null ||
   warn "git user.email not set. Add it to ~/.gitconfig.local:  [user] email = you@example.com"
 
