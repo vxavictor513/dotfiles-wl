@@ -1,0 +1,32 @@
+#!/bin/bash
+# IntelliJ IDEA launcher that returns control to the shell.
+# Shadows Homebrew's /opt/homebrew/bin/idea (which execs the binary in the foreground).
+APP="/Applications/IntelliJ IDEA.app"
+
+# Blocking modes (e.g. `idea --wait file` as $EDITOR, or diff/merge) need the native binary.
+# Subcommands only count as the first argument; --wait can appear anywhere.
+case "${1:-}" in
+  diff|merge|format|inspect) exec "$APP/Contents/MacOS/idea" "$@" ;;
+esac
+for a in "$@"; do
+  case "$a" in
+    --wait|-w) exec "$APP/Contents/MacOS/idea" "$@" ;;
+  esac
+done
+
+# `open` launches the app with a different cwd, so make existing paths absolute.
+args=()
+for a in "$@"; do
+  if [[ "$a" != -* && -d "$a" ]]; then
+    a="$(cd "$a" && pwd -P)"
+  elif [[ "$a" != -* && -e "$a" ]]; then
+    a="$(cd "$(dirname "$a")" && pwd -P)/$(basename "$a")"
+  fi
+  args+=("$a")
+done
+
+if (( ${#args[@]} )); then
+  exec open -na "$APP" --args "${args[@]}"
+else
+  exec open -na "$APP"
+fi

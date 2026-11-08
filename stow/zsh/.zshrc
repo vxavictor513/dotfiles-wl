@@ -38,4 +38,3 @@ alias lg='lazygit'
 
 # --- Local overrides (keep last) ---
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
-export PATH="$PATH:/Applications/IntelliJ IDEA.app/Contents/MacOS"
